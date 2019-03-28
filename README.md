@@ -42,7 +42,7 @@ Enter the following command to execute.
 ```  
 soccerwindow2 
 ```  
-This application is made for  [the spectator app.](https://github.com/rinmunagi/spectator_app).  
+This application is made for [the spectator app.](https://github.com/rinmunagi/spectator_app)  
 The main usage is written in [here](https://github.com/rinmunagi/spectator_app).
 
 ## Author
