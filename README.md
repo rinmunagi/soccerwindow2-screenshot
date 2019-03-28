@@ -10,7 +10,7 @@ The Spectator App. is developed for extension to a soccer monitor that is used i
 The aim of the extension is to make the experience of watching games more entertaining.  
 The soccerwindow2-screenshot is necessary for capturing the images in order for the CNN to use them.  
 
-[the original soccerwindow2](https://ja.osdn.net/projects/rctools/releases/68532/)**  
+**[the original soccerwindow2](https://ja.osdn.net/projects/rctools/releases/68532/)**  
 
 ## Requirement
  - Qt-3.3.x, Qt-4.3 or later
