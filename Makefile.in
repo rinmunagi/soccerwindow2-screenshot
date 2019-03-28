@@ -107,11 +107,11 @@ am__v_P_1 = :
 AM_V_GEN = $(am__v_GEN_@AM_V@)
 am__v_GEN_ = $(am__v_GEN_@AM_DEFAULT_V@)
 am__v_GEN_0 = @echo "  GEN     " $@;
-am__v_GEN_1 = 
+am__v_GEN_1 =
 AM_V_at = $(am__v_at_@AM_V@)
 am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
 am__v_at_0 = @
-am__v_at_1 = 
+am__v_at_1 =
 SOURCES =
 DIST_SOURCES =
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
@@ -190,7 +190,7 @@ am__DIST_COMMON = $(srcdir)/Doxyfile.in $(srcdir)/Makefile.in \
 	$(srcdir)/config.h.in $(srcdir)/soccerwindow2.spec.in \
 	$(top_srcdir)/config/compile $(top_srcdir)/config/install-sh \
 	$(top_srcdir)/config/missing AUTHORS COPYING ChangeLog INSTALL \
-	NEWS README config/compile config/depcomp config/install-sh \
+	NEWS README.md config/compile config/depcomp config/install-sh \
 	config/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
@@ -487,7 +487,7 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in:  $(am__configure_deps) 
+$(srcdir)/config.h.in:  $(am__configure_deps)
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f stamp-h1
 	touch $@
