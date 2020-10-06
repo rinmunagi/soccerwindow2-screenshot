@@ -695,7 +695,9 @@ ImageSaveDialog::saveImage( const int current_index,
 
     QString file_ext = tr( "." ) + format;
 
-    QImage image( M_field_canvas->size(), QImage::Format_RGB32 );
+    // 2020/10 Fukushima changed
+    // To have the same image that the Python model wants
+    QImage image( QSize( 256, 160 ), QImage::Format_RGB32 );
 
     // constructs a painter that begins painting the paint "image" immediately.
     QPainter painter( &image );
@@ -706,14 +708,18 @@ ImageSaveDialog::saveImage( const int current_index,
     file_path_all += QString( "%1" ).arg( current_index, 5, 10, QChar( '0' ) );
     file_path_all += file_ext;
 
+    // 2020/10 Fukushima changed
+    // To have the same image that the Python model wants
+    M_main_data.update( 256, 160 );
     M_field_canvas->draw( painter );
 
+    // Fukushima 2020 comment out (this implementation cause a bug)
     // Lea Eisti 2018
     // To have the same image size that the Python model wants
-    painter.scale(0.2,0.2);
-    QImage image3 = image.scaled(256,160,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+    // painter.scale(0.2,0.2);
+    // QImage image3 = image.scaled(256,160,Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
-    if ( ! image3.save( file_path_all, format.toAscii() ) )
+    if ( ! image.save( file_path_all, format.toAscii() ) )
     {
         QMessageBox::critical( this,
                                tr( "Error" ),
@@ -729,7 +735,7 @@ ImageSaveDialog::saveImage( const int current_index,
     if (SITUATION_SCORE)
     {
 
-        // adress port
+        // adress por
         int PORT =  15555;
         int sock;
         /*
