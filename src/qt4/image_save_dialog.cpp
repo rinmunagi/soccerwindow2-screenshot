@@ -735,7 +735,7 @@ ImageSaveDialog::saveImage( const int current_index,
     if (SITUATION_SCORE)
     {
 
-        // adress por
+        // adress port
         int PORT =  15555;
         int sock;
         /*

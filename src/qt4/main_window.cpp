@@ -2385,7 +2385,7 @@ MainWindow::reconnectMonitor()
         disconnectMonitor();
         std::cerr << "Trying to reconnect ..." << std::endl;
 
-        // Lea Eisti 2018
+        // 2020/10 Fukushima
         // To save the images of the match with the date and time in the name file
         M_dateTime_begin = QDateTime::currentDateTime().toString( "yyyyMMddhhmmss-" );
 
