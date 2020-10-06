@@ -258,6 +258,7 @@ private slots:
     void connectMonitor();
     void connectMonitorTo();
     void disconnectMonitor();
+    void reconnectMonitor();
     void killServer();
     void startServer();
     void restartServer();

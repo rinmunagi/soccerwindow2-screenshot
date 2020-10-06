@@ -60,6 +60,7 @@
 #include <string>
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 
 #include <csignal> // ::kill()
 #include <cstdlib> // system()
@@ -2179,10 +2180,6 @@ MainWindow::kickOff()
     {
         M_monitor_client->sendKickOff();
     }
-
-    // Lea Eisti 2018
-    // To save the images of the match with the date and time in the name file
-    M_dateTime_begin = QDateTime::currentDateTime().toString( "yyyyMMddhhmmss-" );
 }
 
 /*-------------------------------------------------------------------*/
@@ -2314,7 +2311,7 @@ MainWindow::connectMonitorTo( const char * hostname )
     connect( M_monitor_client, SIGNAL( received() ),
              this, SLOT( receiveMonitorPacket() ) );
     connect( M_monitor_client, SIGNAL( timeout() ),
-             this, SLOT( disconnectMonitor() ) );
+             this, SLOT( reconnectMonitor() ) );
 
     M_log_player->setLiveMode();
 
@@ -2343,7 +2340,7 @@ MainWindow::disconnectMonitor()
                     this, SLOT( receiveMonitorPacket() ) );
 
         disconnect( M_monitor_client, SIGNAL( timeout() ),
-                    this, SLOT( disconnectMonitor() ) );
+                    this, SLOT( reconnectMonitor() ) );
 
         delete M_monitor_client;
         M_monitor_client = static_cast< MonitorClient * >( 0 );
@@ -2373,6 +2370,34 @@ MainWindow::disconnectMonitor()
     M_toggle_debug_server_act->setEnabled( false );
     M_show_image_save_dialog_act->setEnabled( true );
 }
+
+
+/*-------------------------------------------------------------------*/
+/*!
+
+ */
+void
+MainWindow::reconnectMonitor()
+{
+    //std::cerr << "MainWindow::reconnectMonitor()" << std::endl;
+    if ( M_monitor_client )
+    {
+        disconnectMonitor();
+        std::cerr << "Trying to reconnect ..." << std::endl;
+
+        // Lea Eisti 2018
+        // To save the images of the match with the date and time in the name file
+        M_dateTime_begin = QDateTime::currentDateTime().toString( "yyyyMMddhhmmss-" );
+
+        QTimer::singleShot( 1 * 1000,
+                            this, SLOT( connectMonitor() ) );
+    }
+    else
+    {
+        connectMonitor();
+    }
+}
+
 
 /*-------------------------------------------------------------------*/
 /*!
