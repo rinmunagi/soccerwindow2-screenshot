@@ -102,6 +102,7 @@ private:
     int M_client_version;
     int M_wait_seconds;
     bool M_auto_quit_mode;
+    bool M_auto_reconnect_mode;
     bool M_kill_server;
     int M_server_pid;
     std::string M_server_path; //!< rcssserver command line path
@@ -290,6 +291,7 @@ public:
     int clientVersion() const { return M_client_version; }
     int waitSeconds() const { return M_wait_seconds; }
     bool autoQuitMode() const { return M_auto_quit_mode; }
+    bool autoReconnectMode() const { return M_auto_reconnect_mode; }
     bool killServer() const { return M_kill_server; }
     int serverPID() const { return M_server_pid; }
     const std::string & serverPath() const { return M_server_path; }
