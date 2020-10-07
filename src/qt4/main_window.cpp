@@ -2203,7 +2203,13 @@ MainWindow::setLiveMode()
 void
 MainWindow::connectMonitor()
 {
-    connectMonitorTo( "127.0.0.1" );
+    std::string host = Options::instance().host();
+    if ( host.empty() )
+    {
+        host = "127.0.0.1";
+    }
+
+    connectMonitorTo( host.c_str() );
 }
 
 /*-------------------------------------------------------------------*/
@@ -2213,7 +2219,6 @@ MainWindow::connectMonitor()
 void
 MainWindow::connectMonitorTo()
 {
-    M_last_connected_host = QString::fromStdString( Options::instance().host() );
     if ( M_last_connected_host.isEmpty() )
     {
         M_last_connected_host = "127.0.0.1";
