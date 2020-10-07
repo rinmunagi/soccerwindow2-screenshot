@@ -2213,6 +2213,7 @@ MainWindow::connectMonitor()
 void
 MainWindow::connectMonitorTo()
 {
+    M_last_connected_host = QString::fromStdString( Options::instance().host() );
     if ( M_last_connected_host.isEmpty() )
     {
         M_last_connected_host = "127.0.0.1";
