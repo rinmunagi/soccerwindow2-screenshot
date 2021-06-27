@@ -87,6 +87,7 @@ Options::Options()
     , M_client_version( 4 )
     , M_wait_seconds( 5 )
     , M_auto_quit_mode( false )
+    , M_auto_reconnect_mode( false )
     , M_kill_server( false )
     , M_server_pid( 0 )
     , M_server_path( "rcssserver" )
@@ -254,8 +255,9 @@ Options::parseCmdLine( int argc,
           &M_wait_seconds,
           "set maximal seconds to wait a message from rcssserver." )
         ( "auto-quit-mode", "",
-          rcsc::BoolSwitch( &M_auto_quit_mode ),
-          "enable automatic quit after game end." )
+          rcsc::BoolSwitch( &M_auto_quit_mode ) )
+        ( "auto-reconnect-mode", "",
+        rcsc::BoolSwitch( &M_auto_reconnect_mode ) )
         ( "kill-server", "",
           rcsc::BoolSwitch( &M_kill_server ),
           "kill rcssserver when soccerwindow2 is quit." )
